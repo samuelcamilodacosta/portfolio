@@ -117,6 +117,8 @@ portfolio/
 │   │   └── locales/
 │   │       ├── pt-BR/      # Portuguese text and content
 │   │       └── en/         # English text and content
+│   ├── config/
+│   │   └── site.ts         # BASE_PATH (/portfolio) — Vite base + Router basename
 │   ├── types/              # locale.ts, portfolio.ts, theme.ts, ui.ts
 │   ├── context/            # ThemeContext, LocaleContext
 │   ├── components/
@@ -179,7 +181,7 @@ Each locale's `index.ts` imports the other files and builds the `Translation` ob
 | Static meta tags and SEO | `index.html` |
 | Section styling | `src/components/{Section}/*.module.css` |
 | Color and theme variables | `src/styles/variables.css` |
-| New route | `src/pages/`, `src/App.tsx`, and locale `meta.pageTitles` |
+| New route | `src/pages/`, `src/App.tsx`, locale `meta.pageTitles`, and `src/config/site.ts` if the base path changes |
 | Data contracts | `src/types/` |
 
 ### Alias imports
@@ -234,11 +236,11 @@ Coverage requires **100%** for lines, functions, branches, and statements (exclu
 
 ### GitHub Pages (production)
 
-The site is published at **[https://samuelcamilodacosta.github.io](https://samuelcamilodacosta.github.io)** (user site, root URL).
+The site is published at **[https://samuelcamilodacosta.github.io/portfolio/](https://samuelcamilodacosta.github.io/portfolio/)** (project site).
 
-Deployment runs automatically via `.github/workflows/deploy.yml` on every push to the `main` branch. Vite is configured with `base: '/'` for this URL.
+Deployment runs automatically via `.github/workflows/deploy.yml` on every push to the `main` branch. The base path (`/portfolio`) is centralized in `src/config/site.ts` and mirrored in Vite (`base`) and React Router (`basename`), so links such as **Home** point to `/portfolio/` instead of the domain root.
 
-Routes such as `/sobre` and `/experiencia` work because the workflow copies `index.html` to `404.html` after the build — the standard SPA fallback for GitHub Pages.
+Routes such as `/portfolio/sobre` work because the workflow copies `index.html` to `404.html` after the build — the standard SPA fallback for GitHub Pages.
 
 ### Other platforms
 

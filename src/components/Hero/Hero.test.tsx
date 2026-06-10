@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import Hero from './Hero'
+import { toBrowserPath } from '@/config/site'
 import { renderWithProviders } from '@/test/test-utils'
 import { locales } from '@/i18n'
 
@@ -15,9 +16,12 @@ describe('Hero', () => {
     expect(screen.getByText(hero.education.title)).toBeInTheDocument()
     expect(screen.getByRole('link', { name: hero.ctaExperience })).toHaveAttribute(
       'href',
-      '/experiencia',
+      toBrowserPath('/experiencia'),
     )
-    expect(screen.getByRole('link', { name: hero.ctaProjects })).toHaveAttribute('href', '/projetos')
+    expect(screen.getByRole('link', { name: hero.ctaProjects })).toHaveAttribute(
+      'href',
+      toBrowserPath('/projetos'),
+    )
     expect(screen.getByText(hero.education.items[0].institution!)).toBeInTheDocument()
     expect(screen.getByText(hero.education.items[1].degree)).toBeInTheDocument()
   })

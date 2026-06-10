@@ -117,6 +117,8 @@ portfolio/
 │   │   └── locales/
 │   │       ├── pt-BR/      # textos e conteúdo em português
 │   │       └── en/         # textos e conteúdo em inglês
+│   ├── config/
+│   │   └── site.ts         # BASE_PATH (/portfolio) — Vite base + Router basename
 │   ├── types/              # locale.ts, portfolio.ts, theme.ts, ui.ts
 │   ├── context/            # ThemeContext, LocaleContext
 │   ├── components/
@@ -179,7 +181,7 @@ O `index.ts` de cada locale importa os demais arquivos e monta o objeto `Transla
 | Meta tags e SEO estático | `index.html` |
 | Estilo de uma seção | `src/components/{Seção}/*.module.css` |
 | Variáveis de cor e tema | `src/styles/variables.css` |
-| Nova rota | `src/pages/`, `src/App.tsx` e locale `meta.pageTitles` |
+| Nova rota | `src/pages/`, `src/App.tsx`, locale `meta.pageTitles` e `src/config/site.ts` se mudar o base path |
 | Contratos de dados | `src/types/` |
 
 ### Imports com alias
@@ -234,11 +236,11 @@ A cobertura exige **100%** em lines, functions, branches e statements (exceto ar
 
 ### GitHub Pages (produção)
 
-Site publicado em **[https://samuelcamilodacosta.github.io](https://samuelcamilodacosta.github.io)** (site de usuário, URL na raiz).
+Site publicado em **[https://samuelcamilodacosta.github.io/portfolio/](https://samuelcamilodacosta.github.io/portfolio/)** (site de projeto).
 
-O deploy é feito automaticamente pelo workflow `.github/workflows/deploy.yml` a cada push na branch `main`. O Vite está configurado com `base: '/'` para esse endereço.
+O deploy é feito automaticamente pelo workflow `.github/workflows/deploy.yml` a cada push na branch `main`. O caminho base (`/portfolio`) está centralizado em `src/config/site.ts` e replicado no Vite (`base`) e no React Router (`basename`), para que links como **Início** apontem para `/portfolio/` e não para a raiz do domínio.
 
-Rotas como `/sobre` e `/experiencia` funcionam porque o workflow copia `index.html` para `404.html` após o build — fallback padrão de SPAs no GitHub Pages.
+Rotas como `/portfolio/sobre` funcionam porque o workflow copia `index.html` para `404.html` após o build — fallback padrão de SPAs no GitHub Pages.
 
 ### Outras plataformas
 

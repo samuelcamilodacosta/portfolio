@@ -1,5 +1,6 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BASE_PATH } from './config/site'
 import { ThemeProvider } from './context/ThemeContext'
 import { LocaleProvider } from './context/LocaleContext'
 import Layout from './layouts/Layout'
@@ -28,7 +29,7 @@ export default function App() {
   return (
     <LocaleProvider>
       <ThemeProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={BASE_PATH}>
           <Routes>
             <Route element={<Layout />}>
               <Route

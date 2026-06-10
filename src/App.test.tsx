@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 import App from './App'
+import { toBrowserPath } from '@/config/site'
 import { locales } from '@/i18n'
 
 const routes = [
@@ -14,7 +15,7 @@ const routes = [
 
 describe('App', () => {
   it.each(routes)('renders $path route inside layout', async ({ path, heading }) => {
-    window.history.pushState({}, '', path)
+    window.history.pushState({}, '', toBrowserPath(path))
     render(<App />)
 
     await waitFor(() => {
@@ -23,7 +24,7 @@ describe('App', () => {
   })
 
   it('renders not found page for unknown routes', async () => {
-    window.history.pushState({}, '', '/pagina-desconhecida')
+    window.history.pushState({}, '', toBrowserPath('/pagina-desconhecida'))
     render(<App />)
 
     await waitFor(() => {

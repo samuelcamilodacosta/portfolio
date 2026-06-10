@@ -1,5 +1,6 @@
 import { render, type RenderOptions } from '@testing-library/react'
 import { MemoryRouter, type MemoryRouterProps } from 'react-router-dom'
+import { BASE_PATH, toBrowserPath } from '@/config/site'
 import { LocaleProvider } from '@/context/LocaleContext'
 import { ThemeProvider } from '@/context/ThemeContext'
 import type { LocaleCode } from '@/types/locale'
@@ -18,7 +19,7 @@ interface WrapperProps {
 function createWrapper({ route = '/', routerProps }: ProviderOptions) {
   return function Wrapper({ children }: WrapperProps) {
     return (
-      <MemoryRouter initialEntries={[route]} {...routerProps}>
+      <MemoryRouter basename={BASE_PATH} initialEntries={[toBrowserPath(route)]} {...routerProps}>
         <LocaleProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </LocaleProvider>

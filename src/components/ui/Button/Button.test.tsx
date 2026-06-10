@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
 import { describe, expect, it, vi } from 'vitest'
 import Button from './Button'
+import { toBrowserPath } from '@/config/site'
 import { renderWithProviders } from '@/test/test-utils'
 
 describe('Button', () => {
@@ -20,7 +21,7 @@ describe('Button', () => {
     renderWithProviders(<Button to="/experiencia">Experience</Button>)
 
     const link = screen.getByRole('link', { name: 'Experience' })
-    expect(link).toHaveAttribute('href', '/experiencia')
+    expect(link).toHaveAttribute('href', toBrowserPath('/experiencia'))
   })
 
   it('renders an anchor when href is provided', () => {
