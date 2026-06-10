@@ -232,11 +232,19 @@ Coverage requires **100%** for lines, functions, branches, and statements (exclu
 
 ## Deploy
 
-After `npm run build`, publish the contents of the `dist/` folder on any static site host:
+### GitHub Pages (production)
 
-- Vercel, Netlify, GitHub Pages, Cloudflare Pages, Azure Static Web Apps, etc.
+The site is published at **[https://samuelcamilodacosta.github.io](https://samuelcamilodacosta.github.io)** (user site, root URL).
 
-For SPAs with React Router, configure the server to redirect unknown routes to `index.html` (fallback), avoiding 404 when accessing `/sobre` or `/experiencia` directly.
+Deployment runs automatically via `.github/workflows/deploy.yml` on every push to the `main` branch. Vite is configured with `base: '/'` for this URL.
+
+Routes such as `/sobre` and `/experiencia` work because the workflow copies `index.html` to `404.html` after the build — the standard SPA fallback for GitHub Pages.
+
+### Other platforms
+
+After `npm run build`, publish the contents of the `dist/` folder on any static site host (Vercel, Netlify, Cloudflare Pages, Azure Static Web Apps, etc.).
+
+For SPAs with React Router, configure the server to redirect unknown routes to `index.html` (fallback).
 
 The project already includes `public/_redirects` for Netlify:
 
