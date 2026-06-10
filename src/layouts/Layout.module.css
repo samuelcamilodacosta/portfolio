@@ -1,0 +1,12 @@
+.main {
+  min-height: calc(100vh - var(--header-height));
+  padding-top: var(--header-height);
+}
+
+.main > :first-child {
+  padding-top: var(--section-padding-top);
+}
+
+.mainHome {
+  min-height: 100vh;
+}
