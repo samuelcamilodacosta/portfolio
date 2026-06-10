@@ -1,3 +1,5 @@
+**Português** | [English](./README.en.md)
+
 # Portfólio — Samuel Costa
 
 Site pessoal de apresentação profissional desenvolvido com **React**, **TypeScript** e **Vite**. Exibe experiência, tecnologias, projetos e formas de contato, com suporte a **português (BR)** e **inglês**.
@@ -7,9 +9,12 @@ Site pessoal de apresentação profissional desenvolvido com **React**, **TypeSc
 - Páginas: Início, Sobre, Tecnologias, Experiência, Projetos e Contato
 - Alternância de idioma **PT | EN** (preferência salva no navegador)
 - Tema claro e escuro (respeita preferência do sistema na primeira visita)
-- Layout responsivo com animações de entrada ao scroll
+- Layout responsivo com menu mobile e animações de entrada ao scroll
+- Cards de experiência com detalhes expansíveis (entregas, resultados, destaques)
 - Rotas com lazy loading para melhor performance
+- SEO: meta tags, Open Graph, Twitter Cards e JSON-LD em `index.html`
 - TypeScript com verificação de tipos no build
+- Suite de testes com **Vitest** e **Testing Library** (cobertura mínima de 100%)
 
 ## Stack
 
@@ -20,7 +25,8 @@ Site pessoal de apresentação profissional desenvolvido com **React**, **TypeSc
 | Build | Vite 8 |
 | Roteamento | React Router 7 |
 | Estilos | CSS Modules + variáveis globais |
-| Lint | ESLint |
+| Testes | Vitest 4 + Testing Library + jsdom |
+| Lint | ESLint 10 (flat config) |
 
 ## Pré-requisitos
 
@@ -32,7 +38,7 @@ Site pessoal de apresentação profissional desenvolvido com **React**, **TypeSc
 ### 1. Clonar o repositório
 
 ```bash
-git clone <url-do-repositorio>
+git clone https://github.com/samuelcamilodacosta/portfolio.git
 cd portfolio
 ```
 
@@ -71,10 +77,13 @@ Serve localmente o conteúdo de `dist/` para validar o build antes de publicar.
 | Comando | Descrição |
 |---------|-----------|
 | `npm run dev` | Servidor de desenvolvimento com HMR |
-| `npm run build` | Typecheck (`tsc`) + build de produção |
+| `npm run build` | Typecheck (`tsc -b`) + build de produção |
 | `npm run typecheck` | Verificação de tipos TypeScript |
 | `npm run lint` | Análise estática com ESLint |
 | `npm run preview` | Preview local do build de produção |
+| `npm run test` | Executa a suíte de testes uma vez |
+| `npm run test:watch` | Executa testes em modo watch |
+| `npm run test:coverage` | Executa testes com relatório de cobertura |
 
 ## Rotas
 
@@ -88,13 +97,16 @@ Serve localmente o conteúdo de `dist/` para validar o build antes de publicar.
 | `/contato` | Contato | E-mail, LinkedIn, GitHub |
 | `*` | 404 | Página não encontrada |
 
-As URLs permanecem em português independentemente do idioma selecionado; apenas os textos da interface mudam.
+As URLs permanecem em português independentemente do idioma selecionado; apenas os textos da interface mudam. O título da aba é atualizado dinamicamente conforme a rota e o idioma (`Layout` + `meta.pageTitles`).
 
 ## Estrutura do projeto
 
 ```
 portfolio/
-├── public/                 # arquivos estáticos (favicon, etc.)
+├── public/
+│   ├── favicon.svg
+│   ├── icons.svg
+│   └── _redirects          # fallback SPA para Netlify
 ├── src/
 │   ├── assets/             # imagens (ex.: profile.png)
 │   ├── content/
@@ -105,20 +117,38 @@ portfolio/
 │   │   └── locales/
 │   │       ├── pt-BR/      # textos e conteúdo em português
 │   │       └── en/         # textos e conteúdo em inglês
-│   ├── types/              # interfaces TypeScript
+│   ├── types/              # locale.ts, portfolio.ts, theme.ts, ui.ts
 │   ├── context/            # ThemeContext, LocaleContext
-│   ├── components/         # seções da UI e componentes reutilizáveis
+│   ├── components/
+│   │   ├── ui/             # Button, SectionTitle
+│   │   ├── About/
+│   │   ├── Contact/
+│   │   ├── Experience/
+│   │   ├── Footer/
+│   │   ├── Header/
+│   │   ├── Hero/
+│   │   ├── LanguageToggle/
+│   │   ├── Projects/
+│   │   ├── Skills/
+│   │   ├── ThemeToggle/
+│   │   └── Timeline/
 │   ├── pages/              # entrada de cada rota
 │   ├── layouts/            # header, footer, shell da aplicação
-│   ├── hooks/
+│   ├── hooks/              # useIntersectionObserver
+│   ├── test/
+│   │   ├── setup.ts        # mocks globais (IntersectionObserver, matchMedia)
+│   │   └── test-utils.tsx  # renderWithProviders()
 │   ├── styles/             # globals.css, variables.css
 │   ├── App.tsx             # rotas e providers
 │   └── main.tsx            # ponto de entrada React
-├── index.html
-├── vite.config.ts
+├── index.html              # SEO, tema/locale inline (evita flash)
+├── vite.config.ts          # alias @/, config Vitest
+├── eslint.config.js
 ├── tsconfig.json
 └── package.json
 ```
+
+Os arquivos `*.test.{ts,tsx}` ficam junto ao código que testam (componentes, contextos, hooks, páginas e i18n).
 
 ### Conteúdo por idioma
 
@@ -126,11 +156,13 @@ Cada pasta em `src/i18n/locales/{pt-BR|en}/` contém:
 
 | Arquivo | Conteúdo |
 |---------|----------|
-| `index.ts` | Navegação, hero, meta, textos de UI, about, contact labels |
+| `index.ts` | Navegação, hero, meta, textos de UI, about, contact, footer, common |
 | `experience.ts` | Experiência profissional, projetos, métricas, diferenciais |
 | `skills.ts` | Categorias de tecnologias |
 | `timeline.ts` | Linha do tempo da carreira |
 | `personalProjects.ts` | Projetos pessoais |
+
+O `index.ts` de cada locale importa os demais arquivos e monta o objeto `Translation` validado com `satisfies Translation`.
 
 ## Guia de edição
 
@@ -138,11 +170,13 @@ Cada pasta em `src/i18n/locales/{pt-BR|en}/` contém:
 |----------------|-------------|
 | Menu, hero, botões, meta (PT) | `src/i18n/locales/pt-BR/index.ts` |
 | Menu, hero, botões, meta (EN) | `src/i18n/locales/en/index.ts` |
+| Textos compartilhados da UI (PT/EN) | `common` em cada `index.ts` |
 | Experiência e projetos (PT) | `src/i18n/locales/pt-BR/experience.ts` |
 | Experiência e projetos (EN) | `src/i18n/locales/en/experience.ts` |
 | Skills / timeline / projetos pessoais | `src/i18n/locales/{pt-BR\|en}/` |
 | E-mail, LinkedIn, GitHub | `src/content/shared/contact.ts` |
 | Foto de perfil | `src/assets/profile.png` |
+| Meta tags e SEO estático | `index.html` |
 | Estilo de uma seção | `src/components/{Seção}/*.module.css` |
 | Variáveis de cor e tema | `src/styles/variables.css` |
 | Nova rota | `src/pages/`, `src/App.tsx` e locale `meta.pageTitles` |
@@ -164,6 +198,7 @@ Configurado em `vite.config.ts` e `tsconfig.json`.
 - Idioma padrão: **pt-BR**
 - Alternância pelo botão **PT | EN** no header
 - Preferência persistida em `localStorage` (chave `locale`)
+- Script inline em `index.html` aplica `lang` no `<html>` antes do React carregar
 - Cada arquivo de locale é validado em compile time com `satisfies Translation`
 
 ## Tema
@@ -171,6 +206,29 @@ Configurado em `vite.config.ts` e `tsconfig.json`.
 - Modos: **claro** e **escuro**
 - Preferência salva em `localStorage` (chave `theme`)
 - Na primeira visita, segue `prefers-color-scheme` do sistema operacional
+- Script inline em `index.html` aplica `data-theme` antes do React carregar (sem flash)
+
+## Testes
+
+A configuração de testes fica em `vite.config.ts` (ambiente **jsdom**, setup em `src/test/setup.ts`).
+
+```bash
+npm run test           # execução única
+npm run test:watch     # modo interativo
+npm run test:coverage  # relatório de cobertura
+```
+
+Para renderizar componentes com roteador, tema e locale nos testes, use `renderWithProviders` de `src/test/test-utils.tsx`:
+
+```tsx
+import { renderWithProviders } from '@/test/test-utils'
+
+renderWithProviders(<Header />, { route: '/sobre', locale: 'en' })
+```
+
+O setup global inclui mocks de `IntersectionObserver`, `matchMedia` e `window.scrollTo`. Use `triggerAllIntersections()` (exportado de `setup.ts`) para simular elementos entrando na viewport.
+
+A cobertura exige **100%** em lines, functions, branches e statements (exceto arquivos de locale, tipos, `main.tsx` e utilitários de teste).
 
 ## Deploy
 
@@ -180,11 +238,13 @@ Após `npm run build`, publique o conteúdo da pasta `dist/` em qualquer hospeda
 
 Para SPAs com React Router, configure o servidor para redirecionar rotas desconhecidas para `index.html` (fallback), evitando 404 ao acessar `/sobre` ou `/experiencia` diretamente.
 
-Exemplo para Netlify (`public/_redirects` ou arquivo na raiz do deploy):
+O projeto já inclui `public/_redirects` para Netlify:
 
 ```
 /*    /index.html   200
 ```
+
+Em outras plataformas, configure o equivalente (ex.: `_redirects` no Cloudflare Pages, `vercel.json` rewrites na Vercel).
 
 ## Desenvolvimento
 
@@ -201,6 +261,13 @@ Exemplo para Netlify (`public/_redirects` ou arquivo na raiz do deploy):
 3. Registrar rota em `src/App.tsx`
 4. Adicionar textos nos arquivos `index.ts` de cada locale
 5. Adicionar item no array `nav` e em `meta.pageTitles`
+6. Adicionar testes co-localizados (`*.test.tsx`)
+
+### Adicionar ou alterar testes
+
+1. Colocar o arquivo `*.test.{ts,tsx}` ao lado do módulo testado
+2. Usar `renderWithProviders` quando o componente depende de contexto ou rota
+3. Rodar `npm run test:coverage` para validar os thresholds de cobertura
 
 ## Licença
 
