@@ -12,6 +12,7 @@
   --color-on-primary: #0f172a;
   --color-header-bg: rgba(15, 23, 42, 0.85);
   --color-overlay: rgba(0, 0, 0, 0.5);
+  --overlay-blur: 8px;
   --color-grid-line: rgba(148, 163, 184, 0.04);
   --color-section-alt: rgba(30, 41, 59, 0.4);
   --color-floating-card: rgba(30, 41, 59, 0.9);
@@ -55,6 +56,7 @@
   --color-on-primary: #ffffff;
   --color-header-bg: rgba(248, 250, 252, 0.9);
   --color-overlay: rgba(15, 23, 42, 0.4);
+  --overlay-blur: 8px;
   --color-grid-line: rgba(15, 23, 42, 0.06);
   --color-section-alt: rgba(226, 232, 240, 0.6);
   --color-floating-card: rgba(255, 255, 255, 0.95);

@@ -118,7 +118,7 @@ portfolio/
 │   │       ├── pt-BR/      # textos e conteúdo em português
 │   │       └── en/         # textos e conteúdo em inglês
 │   ├── config/
-│   │   └── site.ts         # BASE_PATH (/portfolio) — Vite base + Router basename
+│   │   └── site.ts         # BASE_PATH — Vite base + Router basename (via VITE_BASE_PATH)
 │   ├── types/              # locale.ts, portfolio.ts, theme.ts, ui.ts
 │   ├── context/            # ThemeContext, LocaleContext
 │   ├── components/
@@ -236,11 +236,13 @@ A cobertura exige **100%** em lines, functions, branches e statements (exceto ar
 
 ### GitHub Pages (produção)
 
-Site publicado em **[https://samuelcamilodacosta.github.io/portfolio/](https://samuelcamilodacosta.github.io/portfolio/)** (site de projeto).
+Site publicado em **[https://samuel-dev.com.br](https://samuel-dev.com.br)** (domínio customizado na raiz).
 
-O deploy é feito automaticamente pelo workflow `.github/workflows/deploy.yml` a cada push na branch `main`. O caminho base (`/portfolio`) está centralizado em `src/config/site.ts` e replicado no Vite (`base`) e no React Router (`basename`), para que links como **Início** apontem para `/portfolio/` e não para a raiz do domínio.
+O deploy é feito automaticamente pelo workflow `.github/workflows/deploy.yml` a cada push na branch `main`, com `VITE_BASE_PATH=/` para que assets e rotas apontem para `/assets/...` e `/sobre`, e não para `/portfolio/...`.
 
-Rotas como `/portfolio/sobre` funcionam porque o workflow copia `index.html` para `404.html` após o build — fallback padrão de SPAs no GitHub Pages.
+O caminho base fica centralizado em `src/config/site.ts` e replicado no Vite (`base`) e no React Router (`basename`). Para publicar em um subdiretório (ex.: `/portfolio`), defina `VITE_BASE_PATH=/portfolio` no build.
+
+Rotas como `/sobre` funcionam porque o workflow copia `index.html` para `404.html` após o build — fallback padrão de SPAs no GitHub Pages.
 
 ### Outras plataformas
 

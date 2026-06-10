@@ -118,7 +118,7 @@ portfolio/
 │   │       ├── pt-BR/      # Portuguese text and content
 │   │       └── en/         # English text and content
 │   ├── config/
-│   │   └── site.ts         # BASE_PATH (/portfolio) — Vite base + Router basename
+│   │   └── site.ts         # BASE_PATH — Vite base + Router basename (via VITE_BASE_PATH)
 │   ├── types/              # locale.ts, portfolio.ts, theme.ts, ui.ts
 │   ├── context/            # ThemeContext, LocaleContext
 │   ├── components/
@@ -236,11 +236,13 @@ Coverage requires **100%** for lines, functions, branches, and statements (exclu
 
 ### GitHub Pages (production)
 
-The site is published at **[https://samuelcamilodacosta.github.io/portfolio/](https://samuelcamilodacosta.github.io/portfolio/)** (project site).
+The site is published at **[https://samuel-dev.com.br](https://samuel-dev.com.br)** (custom domain at root).
 
-Deployment runs automatically via `.github/workflows/deploy.yml` on every push to the `main` branch. The base path (`/portfolio`) is centralized in `src/config/site.ts` and mirrored in Vite (`base`) and React Router (`basename`), so links such as **Home** point to `/portfolio/` instead of the domain root.
+Deployment runs automatically via `.github/workflows/deploy.yml` on every push to the `main` branch, with `VITE_BASE_PATH=/` so assets and routes point to `/assets/...` and `/sobre`, not `/portfolio/...`.
 
-Routes such as `/portfolio/sobre` work because the workflow copies `index.html` to `404.html` after the build — the standard SPA fallback for GitHub Pages.
+The base path is centralized in `src/config/site.ts` and mirrored in Vite (`base`) and React Router (`basename`). To publish under a subdirectory (e.g. `/portfolio`), set `VITE_BASE_PATH=/portfolio` at build time.
+
+Routes such as `/sobre` work because the workflow copies `index.html` to `404.html` after the build — the standard SPA fallback for GitHub Pages.
 
 ### Other platforms
 

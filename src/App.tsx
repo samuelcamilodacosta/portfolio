@@ -29,7 +29,7 @@ export default function App() {
   return (
     <LocaleProvider>
       <ThemeProvider>
-        <BrowserRouter basename={BASE_PATH}>
+        <BrowserRouter basename={BASE_PATH || undefined}>
           <Routes>
             <Route element={<Layout />}>
               <Route

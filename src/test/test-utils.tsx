@@ -19,7 +19,11 @@ interface WrapperProps {
 function createWrapper({ route = '/', routerProps }: ProviderOptions) {
   return function Wrapper({ children }: WrapperProps) {
     return (
-      <MemoryRouter basename={BASE_PATH} initialEntries={[toBrowserPath(route)]} {...routerProps}>
+      <MemoryRouter
+        basename={BASE_PATH || undefined}
+        initialEntries={[toBrowserPath(route)]}
+        {...routerProps}
+      >
         <LocaleProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </LocaleProvider>

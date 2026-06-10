@@ -3,12 +3,13 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { BASE_PATH } from './src/config/site'
+import { normalizeBasePath } from './src/config/basePath'
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url))
+const basePath = normalizeBasePath(process.env.VITE_BASE_PATH)
 
 export default defineConfig({
-  base: `${BASE_PATH}/`,
+  base: basePath ? `${basePath}/` : '/',
   plugins: [react()],
   resolve: {
     alias: {
