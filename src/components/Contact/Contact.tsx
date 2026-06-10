@@ -23,7 +23,7 @@ export default function Contact() {
     },
     {
       label: contact.links.linkedin,
-      value: 'linkedin.com/in/samuel-costa',
+      value: 'linkedin.com/in/samuka-costa',
       href: contactInfo.linkedin,
       isEmail: false,
       icon: (
