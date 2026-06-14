@@ -81,7 +81,7 @@ const en = {
         },
         {
           degree: 'IT Technician',
-          institution: null,
+          institution: 'Federal Institute Goiano - Urutaí Campus',
           period: '2012 – 2014',
         },
       ],
@@ -137,7 +137,7 @@ const en = {
   projects: {
     label: 'Portfolio',
     title: 'Personal Projects',
-    subtitle: 'Space prepared for future open source projects and technical experiments',
+    subtitle: 'Open source projects and technical experiments built on my own',
     items: personalProjects,
   },
   contact: {

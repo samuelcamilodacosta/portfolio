@@ -76,7 +76,7 @@ const ptBR = {
         },
         {
           degree: 'Técnico em Informática',
-          institution: null,
+          institution: 'Instituto Federal Goiano - Campus Urutaí',
           period: '2012 – 2014',
         },
       ],
@@ -132,7 +132,7 @@ const ptBR = {
   projects: {
     label: 'Portfólio',
     title: 'Projetos Pessoais',
-    subtitle: 'Espaço preparado para futuros projetos open source e experimentos técnicos',
+    subtitle: 'Projetos open source e experimentos técnicos desenvolvidos por conta própria',
     items: personalProjects,
   },
   contact: {

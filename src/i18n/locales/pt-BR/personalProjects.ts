@@ -2,14 +2,19 @@ import type { PersonalProject } from '@/types/portfolio'
 
 export const personalProjects: PersonalProject[] = [
   {
-    name: 'Em breve',
+    name: 'Sistema para Lojas',
     description:
-      'Espaço reservado para projetos pessoais open source, ferramentas e experimentos técnicos.',
-    technologies: ['Node.js', 'React', 'Cloud'],
-    github: null,
+      'Aplicativo desktop offline para gestão de produtos, estoque e vendas de lojas físicas. PDV com leitor de código de barras, carrinho multi-itens, históricos com filtros e dashboard analítico com KPIs e gráficos de performance.',
+    technologies: ['Electron', 'TypeScript', 'SQLite', 'Chart.js', 'Vitest'],
+    github: 'https://github.com/samuelcamilodacosta/sistema-para-lojas',
     demo: null,
-    differentials: ['Arquitetura limpa', 'Código aberto', 'Documentação completa'],
-    placeholder: true,
+    differentials: [
+      'Offline first com SQLite local',
+      'PDV e leitor de código de barras',
+      '100% cobertura de testes automatizados',
+      'i18n pt-BR/en e tema claro/escuro',
+    ],
+    placeholder: false,
   },
   {
     name: 'Em breve',

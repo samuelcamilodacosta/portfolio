@@ -14,6 +14,6 @@ describe('Projects', () => {
     expect(screen.getByRole('heading', { name: projects.title })).toBeInTheDocument()
 
     expect(screen.getAllByRole('article')).toHaveLength(projects.items.length)
-    expect(screen.getAllByText(projects.items[0].name)).toHaveLength(projects.items.length)
+    expect(screen.getByText(projects.items[0].name)).toBeInTheDocument()
   })
 })

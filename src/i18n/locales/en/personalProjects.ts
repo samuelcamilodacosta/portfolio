@@ -2,14 +2,19 @@ import type { PersonalProject } from '@/types/portfolio'
 
 export const personalProjects: PersonalProject[] = [
   {
-    name: 'Coming soon',
+    name: 'Store Management System',
     description:
-      'Space reserved for personal open source projects, tools, and technical experiments.',
-    technologies: ['Node.js', 'React', 'Cloud'],
-    github: null,
+      'Offline desktop application for managing products, inventory, and sales in physical retail stores. Portuguese (pt-BR) or English (en) interface, light or dark theme, and a counter-focused workflow: barcode scanning, multi-item cart, filtered history views, and an analytics dashboard.',
+    technologies: ['Electron', 'TypeScript', 'SQLite', 'Chart.js', 'Vitest'],
+    github: 'https://github.com/samuelcamilodacosta/sistema-para-lojas/blob/main/README.en.md',
     demo: null,
-    differentials: ['Clean architecture', 'Open source', 'Complete documentation'],
-    placeholder: true,
+    differentials: [
+      'Offline — data persisted locally in SQLite, no internet required',
+      'Sales (POS) — barcode scanner, discounts, Pix/Cash/Debit/Credit',
+      '157 tests with 100% line coverage (Vitest)',
+      'Portuguese (pt-BR) or English (en) and light/dark theme',
+    ],
+    placeholder: false,
   },
   {
     name: 'Coming soon',
