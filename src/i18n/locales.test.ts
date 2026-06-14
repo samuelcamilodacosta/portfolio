@@ -12,10 +12,18 @@ function collectPersonalProjectShape(locale: LocaleCode) {
   return locales[locale].projects.items.map((project) => ({
     technologies: project.technologies,
     placeholder: project.placeholder,
-    github: project.github,
+    hasGithub: project.github !== null,
     demo: project.demo,
     differentialsCount: project.differentials.length,
   }))
+}
+
+function collectPersonalProjectGithubHosts(locale: LocaleCode) {
+  return locales[locale].projects.items.map((project) => {
+    if (!project.github) return null
+    const match = project.github.match(/^https:\/\/github\.com\/([^/]+\/[^/]+)/)
+    return match?.[1] ?? project.github
+  })
 }
 
 describe('locale parity', () => {
@@ -44,6 +52,10 @@ describe('locale parity', () => {
 
   it('keeps the same personal project shape across locales', () => {
     expect(collectPersonalProjectShape('en')).toEqual(collectPersonalProjectShape('pt-BR'))
+  })
+
+  it('keeps personal project github links on the same repository across locales', () => {
+    expect(collectPersonalProjectGithubHosts('en')).toEqual(collectPersonalProjectGithubHosts('pt-BR'))
   })
 
   it('defines a page title for every route', () => {
