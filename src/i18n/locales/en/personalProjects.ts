@@ -17,19 +17,24 @@ export const personalProjects: PersonalProject[] = [
     placeholder: false,
   },
   {
-    name: 'Coming soon',
+    name: 'DataInsight Pro',
     description:
-      'Project focused on microservices and software engineering best practices.',
-    technologies: ['NestJS', 'Docker', 'PostgreSQL'],
-    github: null,
-    demo: null,
-    differentials: ['Automated tests', 'CI/CD', 'Observability'],
-    placeholder: true,
+      'Smart data visualization platform for quick analysis and automatic dashboard generation. Upload CSV or Excel files, inspect columns, generate intelligent charts, and export actionable insights in a focused space.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Recharts', 'SheetJS'],
+    github: 'https://github.com/samuelcamilodacosta/processing-and-data-view',
+    demo: 'https://samuelcamilodacosta.github.io/processing-and-data-view/',
+    differentials: [
+      'CSV/XLS(X) upload up to 100MB',
+      'Automatic column type detection',
+      'Auto-generated intelligent charts',
+      'Responsive i18n pt-BR/en interface',
+    ],
+    placeholder: false,
   },
   {
     name: 'Coming soon',
     description:
-      'Experiment with data processing and interactive visualizations.',
+      'Experiment with microservices and software architecture best practices.',
     technologies: ['Python', 'MongoDB', 'React'],
     github: null,
     demo: null,
