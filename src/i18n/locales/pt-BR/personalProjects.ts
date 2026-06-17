@@ -35,7 +35,7 @@ export const personalProjects: PersonalProject[] = [
     name: 'NutriFit',
     description:
       'Plataforma moderna de nutrição e fitness com integração de IA para análise inteligente de hábitos alimentares. Rastreie refeições, receba recomendações personalizadas por IA e converse com um assistente inteligente em tempo real.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'IA'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'AI'],
     github: 'https://github.com/samuelcamilodacosta/nutrifit',
     demo: 'https://samuelcamilodacosta.github.io/nutrifit/',
     differentials: [
