@@ -32,10 +32,25 @@ export const personalProjects: PersonalProject[] = [
     placeholder: false,
   },
   {
+    name: 'NutriFit',
+    description:
+      'Modern nutrition and fitness platform with AI integration for intelligent analysis of eating habits. Track meals, receive personalized AI recommendations, and chat with an intelligent assistant in real-time.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'AI'],
+    github: 'https://github.com/samuelcamilodacosta/nutrifit',
+    demo: 'https://samuelcamilodacosta.github.io/nutrifit/',
+    differentials: [
+      'Real-time AI chat',
+      'Personalized AI recommendations',
+      'Intelligent meal tracking',
+      'Responsive and intuitive interface',
+    ],
+    placeholder: false,
+  },
+  {
     name: 'Coming soon',
     description:
       'Experiment with microservices and software architecture best practices.',
-    technologies: ['Python', 'MongoDB', 'React'],
+    technologies: ['Python', 'MongoDB', 'NestJS'],
     github: null,
     demo: null,
     differentials: ['Big Data', 'Dashboards', 'REST APIs'],

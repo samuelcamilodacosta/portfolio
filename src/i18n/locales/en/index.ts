@@ -75,9 +75,9 @@ const en = {
       title: 'Education',
       items: [
         {
-          degree: 'Associate Degree in Systems Analysis and Development',
+          degree: 'Technology Degree in Systems Analysis and Development',
           institution: 'UniFatecie University Center',
-          period: '2022 – 2024',
+          period: '2022 – 2025',
         },
         {
           degree: 'IT Technician',
