@@ -19,6 +19,7 @@
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Samuel Costa | Software Engineer | Backend & Cloud</title>
@@ -29,9 +30,11 @@
     <meta name="author" content="Samuel Costa" />
     <meta name="keywords" content="Samuel Costa, Software Engineer, Backend, Microsserviços, Node.js, Java, MongoDB, AWS, Azure, React Native, Angular" />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://samuelcosta.dev" />
+    <link rel="canonical" href="https://samuel-dev.com.br/" />
 
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://samuel-dev.com.br/" />
+    <meta property="og:site_name" content="Samuel Costa" />
     <meta property="og:title" content="Samuel Costa | Software Engineer" />
     <meta
       property="og:description"
@@ -56,16 +59,36 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Samuel Costa",
-        "alternateName": "Samuel Camilo da Costa",
-        "jobTitle": "Software Engineer",
-        "description": "Desenvolvedor de Software especializado em Back-End, Microsserviços e Cloud Computing",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "New Rizon"
-        },
-        "knowsAbout": ["Node.js", "Java", "Microsserviços", "AWS", "Azure", "React Native", "Angular", "MongoDB"]
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Samuel Costa",
+            "alternateName": "Samuel Camilo da Costa",
+            "url": "https://samuel-dev.com.br/",
+            "jobTitle": "Software Engineer",
+            "description": "Desenvolvedor de Software especializado em Back-End, Microsserviços e Cloud Computing",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "New Rizon"
+            },
+            "knowsAbout": ["Node.js", "Java", "Microsserviços", "AWS", "Azure", "React Native", "Angular", "MongoDB"],
+            "sameAs": [
+              "https://github.com/samuelcamilodacosta",
+              "https://linkedin.com/in/samuka-costa/",
+              "https://samuel-dev.com.br/"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "name": "Samuel Costa",
+            "url": "https://samuel-dev.com.br/",
+            "inLanguage": "pt-BR",
+            "author": {
+              "@type": "Person",
+              "name": "Samuel Costa"
+            }
+          }
+        ]
       }
     </script>
   </head>
