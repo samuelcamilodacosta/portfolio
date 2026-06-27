@@ -17,4 +17,5 @@ export interface SectionTitleProps {
   title: string
   subtitle?: string
   className?: string
+  headingLevel?: 'h1' | 'h2'
 }

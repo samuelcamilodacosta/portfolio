@@ -31,6 +31,7 @@ describe('locale parity', () => {
     const t = locales[locale]
 
     expect(t.meta.pageTitles).toBeDefined()
+    expect(t.meta.pageDescriptions).toBeDefined()
     expect(t.nav.length).toBeGreaterThan(0)
     expect(t.hero.techStack.groups.length).toBeGreaterThan(0)
     expect(t.about.paragraphs.length).toBeGreaterThan(0)
@@ -61,10 +62,12 @@ describe('locale parity', () => {
   it('defines a page title for every route', () => {
     for (const locale of localeCodes) {
       const titles = locales[locale].meta.pageTitles
+      const descriptions = locales[locale].meta.pageDescriptions
       const routes = locales[locale].nav.map((item) => item.to)
 
       for (const route of routes) {
         expect(titles[route]).toBeTruthy()
+        expect(descriptions[route]).toBeTruthy()
       }
     }
   })

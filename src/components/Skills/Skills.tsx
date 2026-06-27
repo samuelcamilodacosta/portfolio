@@ -41,6 +41,7 @@ export default function Skills() {
           label={skills.label}
           title={skills.title}
           subtitle={skills.subtitle}
+          headingLevel="h1"
         />
 
         <div className={styles.grid}>

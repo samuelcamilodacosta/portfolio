@@ -90,6 +90,7 @@ export default function Projects() {
           label={projects.label}
           title={projects.title}
           subtitle={projects.subtitle}
+          headingLevel="h1"
         />
 
         <div className={styles.grid}>

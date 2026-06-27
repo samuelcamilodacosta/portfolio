@@ -11,7 +11,7 @@ export default function About() {
   return (
     <section className="section">
       <div className="container">
-        <SectionTitle label={about.label} title={about.title} />
+        <SectionTitle label={about.label} title={about.title} headingLevel="h1" />
 
         <div
           ref={ref}

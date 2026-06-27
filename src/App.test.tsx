@@ -6,11 +6,11 @@ import { locales } from '@/i18n'
 
 const routes = [
   { path: '/', heading: { level: 1, name: /Samuel Costa/i } },
-  { path: '/sobre', heading: { level: 2, name: locales['pt-BR'].about.title } },
-  { path: '/tecnologias', heading: { level: 2, name: locales['pt-BR'].skills.title } },
-  { path: '/experiencia', heading: { level: 2, name: locales['pt-BR'].experience.title } },
-  { path: '/projetos', heading: { level: 2, name: locales['pt-BR'].projects.title } },
-  { path: '/contato', heading: { level: 2, name: locales['pt-BR'].contact.title } },
+  { path: '/sobre', heading: { level: 1, name: locales['pt-BR'].about.title } },
+  { path: '/tecnologias', heading: { level: 1, name: locales['pt-BR'].skills.title } },
+  { path: '/experiencia', heading: { level: 1, name: locales['pt-BR'].experience.title } },
+  { path: '/projetos', heading: { level: 1, name: locales['pt-BR'].projects.title } },
+  { path: '/contato', heading: { level: 1, name: locales['pt-BR'].contact.title } },
 ] as const
 
 describe('App', () => {

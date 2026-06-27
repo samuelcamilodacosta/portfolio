@@ -52,6 +52,7 @@ export default function Contact() {
           label={contact.label}
           title={contact.title}
           subtitle={contact.subtitle}
+          headingLevel="h1"
         />
 
         <div

@@ -52,7 +52,9 @@ export interface CommonStrings {
 export interface Translation {
   meta: {
     pageTitles: Record<string, string>
+    pageDescriptions: Record<string, string>
     notFound: string
+    notFoundDescription: string
   }
   nav: NavItem[]
   header: {

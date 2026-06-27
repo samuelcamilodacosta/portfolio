@@ -15,6 +15,12 @@ describe('SectionTitle', () => {
     expect(screen.getByText('A short intro')).toBeInTheDocument()
   })
 
+  it('supports h1 heading level', () => {
+    renderWithProviders(<SectionTitle title="About Me" headingLevel="h1" />)
+
+    expect(screen.getByRole('heading', { level: 1, name: 'About Me' })).toBeInTheDocument()
+  })
+
   it('becomes visible after intersection', () => {
     renderWithProviders(<SectionTitle title="Skills" />)
 

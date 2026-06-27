@@ -19,7 +19,19 @@ const en = {
       '/projetos': 'Projects | Samuel Costa',
       '/contato': 'Contact | Samuel Costa',
     },
+    pageDescriptions: {
+      '/':
+        'Experience in microservices, scalable APIs, web and mobile applications, corporate integrations, cloud computing, and system modernization.',
+      '/sobre':
+        'My journey in technology began at the New Rizon Back-End Bootcamp (2021), where I was selected to join the team and hired in 2022.',
+      '/tecnologias': 'Full stack used in real production projects',
+      '/experiencia': 'Work on real production projects',
+      '/projetos': 'Open source projects and technical experiments built on my own',
+      '/contato':
+        'I am open to conversations about back-end opportunities, microservices architecture, cloud computing, and full-cycle development. Reach out through any of the channels below.',
+    },
     notFound: 'Page not found | Samuel Costa',
+    notFoundDescription: 'Page not found.',
   },
   nav: [
     { label: 'Home', to: '/' },
@@ -68,7 +80,7 @@ const en = {
         { label: 'Backend', items: ['Node.js', 'NestJS', 'Java', 'Spring Boot'] },
         { label: 'Cloud', items: ['AWS', 'Azure', 'Firebase'] },
         { label: 'Architecture', items: ['Microservices', 'REST APIs', 'BFF'] },
-        { label: 'Web & Mobile', items: ['Angular', 'React Native', 'Ionic'] },
+        { label: 'Web & Mobile', items: ['Angular', 'React', 'Next.js', 'Vite', 'React Native', 'Ionic'] },
       ],
     },
     education: {

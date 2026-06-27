@@ -14,7 +14,20 @@ const ptBR = {
       '/projetos': 'Projetos | Samuel Costa',
       '/contato': 'Contato | Samuel Costa',
     },
+    pageDescriptions: {
+      '/':
+        'Portfólio de Samuel Costa — Desenvolvedor de Software especializado em Back-End, Microsserviços, Cloud Computing e aplicações Web e Mobile.',
+      '/sobre':
+        'Minha jornada na tecnologia começou no Bootcamp Back-End da New Rizon (2021), onde fui selecionado para integrar o time e contratado em 2022.',
+      '/tecnologias': 'Stack completa utilizada em projetos reais de produção',
+      '/experiencia': 'Atuação em projetos reais de produção',
+      '/projetos':
+        'Projetos open source e experimentos técnicos desenvolvidos por conta própria',
+      '/contato':
+        'Estou aberto a conversas sobre oportunidades em back-end, arquitetura de microsserviços, cloud computing e desenvolvimento full cycle. Entre em contato por qualquer um dos canais abaixo.',
+    },
     notFound: 'Página não encontrada | Samuel Costa',
+    notFoundDescription: 'Página não encontrada.',
   },
   nav: [
     { label: 'Início', to: '/' },
@@ -63,7 +76,7 @@ const ptBR = {
         { label: 'Backend', items: ['Node.js', 'NestJS', 'Java', 'Spring Boot'] },
         { label: 'Cloud', items: ['AWS', 'Azure', 'Firebase'] },
         { label: 'Arquitetura', items: ['Microsserviços', 'REST APIs', 'BFF'] },
-        { label: 'Web & Mobile', items: ['Angular', 'React Native', 'Ionic'] },
+        { label: 'Web & Mobile', items: ['Angular', 'React', 'Next.js', 'Vite', 'React Native', 'Ionic'] },
       ],
     },
     education: {

@@ -7,8 +7,10 @@ export default function SectionTitle({
   title,
   subtitle,
   className = '',
+  headingLevel = 'h2',
 }: SectionTitleProps) {
   const [ref, isVisible] = useIntersectionObserver<HTMLDivElement>()
+  const Heading = headingLevel
 
   return (
     <div
@@ -16,7 +18,7 @@ export default function SectionTitle({
       className={`${styles.wrapper} ${isVisible ? styles.visible : ''} ${className}`.trim()}
     >
       {label && <span className={styles.label}>{label}</span>}
-      <h2 className={styles.title}>{title}</h2>
+      <Heading className={styles.title}>{title}</Heading>
       {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
     </div>
   )

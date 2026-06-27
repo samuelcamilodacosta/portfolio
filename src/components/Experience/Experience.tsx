@@ -132,6 +132,7 @@ export default function Experience() {
           label={experience.label}
           title={experience.title}
           subtitle={experience.subtitle}
+          headingLevel="h1"
         />
 
         <div

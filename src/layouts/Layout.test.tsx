@@ -21,6 +21,10 @@ describe('Layout', () => {
     expect(screen.getByText('Page content')).toBeInTheDocument()
     expect(screen.getByText(/© 2026 Samuel Costa/)).toBeInTheDocument()
     expect(document.title).toBe(locales['pt-BR'].meta.pageTitles['/'])
+    expect(document.querySelector('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://samuel-dev.com.br/',
+    )
   })
 
   it('uses alternate main layout and page title on inner routes', () => {
@@ -61,5 +65,9 @@ describe('Layout', () => {
     )
 
     expect(document.title).toBe(locales['pt-BR'].meta.notFound)
+    expect(document.querySelector('meta[name="robots"]')).toHaveAttribute(
+      'content',
+      'noindex, follow',
+    )
   })
 })

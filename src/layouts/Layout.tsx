@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
+import { applyPageMeta, resolvePageMeta } from '../config/seo'
 import { useLocale } from '../context/LocaleContext'
 import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
@@ -7,12 +8,14 @@ import styles from './Layout.module.css'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  const { t } = useLocale()
+  const { locale, t } = useLocale()
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = t.meta.pageTitles[pathname] ?? t.meta.notFound
-  }, [pathname, t])
+
+    const pageMeta = resolvePageMeta({ pathname, locale, t })
+    applyPageMeta(pageMeta, locale)
+  }, [pathname, locale, t])
 
   return null
 }
